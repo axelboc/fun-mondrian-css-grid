@@ -6,7 +6,7 @@ body {
   margin: 0;
 }
 
-#app {
+#canvas {
   display: flex;
   justify-content: center;
   align-items: stretch;
@@ -14,7 +14,7 @@ body {
   height: 100%;
 }
 
-#canvas {
+.grid {
   flex: 1;
   display: grid;
   background-color: #000;

@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
+
 import { YELLOW, RED, BLUE } from './utils/colors'
-import Canvas from './Canvas'
+import { generateGrid } from './utils/generator'
+
+import Grid from './Grid'
 
 class App extends Component {
   constructor(props) {
     super(props);
     
     this.state = {
-      canvas: {
+      grid: {
         columns: 8,
         rows: 10,
         cells: [
@@ -53,12 +56,10 @@ class App extends Component {
   }
 
   render() {
-    const { canvas } = this.state;
+    const { grid } = this.state;
 
     return (
-      <div id="app">
-        <Canvas {...canvas} />
-      </div>
+      <Grid {...grid} />
     )
   }
 }

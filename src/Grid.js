@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Cell from './Cell'
 
-function Canvas(props) {
+function Grid(props) {
   const { rows, columns, cells } = props;
 
   const styles = {
@@ -12,16 +12,16 @@ function Canvas(props) {
   }
 
   return (
-    <div id="canvas" style={styles}>
+    <div className="grid" style={styles}>
       {cells.map((cell, i) => <Cell key={i} {...cell} />)}
     </div>
   )
 }
 
-Canvas.propTypes = {
+Grid.propTypes = {
   rows: PropTypes.number.isRequired,
   columns: PropTypes.number.isRequired,
   cells: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
-export default Canvas
+export default Grid
