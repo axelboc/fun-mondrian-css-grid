@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 function Cell(props) {
-  const { tracks, color } = props;
-  const [rowStart, rowEnd, colStart, colEnd] = tracks;
+  const { bounds, color } = props;
+  const [rowStart, rowEnd, colStart, colEnd] = bounds;
 
   const styles = {
     gridArea: `${rowStart} / ${colStart} / ${rowEnd} / ${colEnd}`,
@@ -16,7 +16,7 @@ function Cell(props) {
 }
 
 Cell.propTypes = {
-  tracks: PropTypes.arrayOf(PropTypes.number).isRequired,
+  bounds: PropTypes.arrayOf(PropTypes.number).isRequired,
   color: PropTypes.string,
 }
 
