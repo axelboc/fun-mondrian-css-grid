@@ -7,9 +7,18 @@
   "author": "Axel Bocciarelli <axelboc@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "http-server"
+    "build": "nwb build-react-app",
+    "clean": "nwb clean-app",
+    "start": "nwb serve-react-app",
+    "test": "nwb test-react",
+    "test:coverage": "nwb test-react --coverage",
+    "test:watch": "nwb test-react --server"
   },
   "devDependencies": {
-    "http-server": "^0.10.0"
+    "nwb": "^0.17.1"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   }
 }
