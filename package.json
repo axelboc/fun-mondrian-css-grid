@@ -1,0 +1,15 @@
+{
+  "name": "fun-mondrian-css-grid",
+  "version": "1.0.0",
+  "description": "Piet Mondrian meets CSS Grid, an artwork generator experiment",
+  "main": "index.js",
+  "repository": "https://github.com/axelboc/fun-mondrian-css-grid.git",
+  "author": "Axel Bocciarelli <axelboc@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "http-server"
+  },
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  }
+}
