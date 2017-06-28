@@ -1,6 +1,6 @@
 {
   "name": "fun-mondrian-css-grid",
-  "version": "0.2.0",
+  "version": "0..0",
   "description": "Piet Mondrian meets CSS Grid, an artwork generator experiment",
   "main": "index.js",
   "repository": "https://github.com/axelboc/fun-mondrian-css-grid.git",
