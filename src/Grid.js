@@ -8,7 +8,7 @@ function Grid(props) {
   const styles = {
     gridTemplateRows: `repeat(${rows}, 1fr)`,
     gridTemplateColumns: `repeat(${columns}, 1fr)`,
-    gridGap: `${gap}rem`,
+    gridGap: `${gap}px`,
   }
 
   return (
