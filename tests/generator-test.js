@@ -1,6 +1,7 @@
 import expect from 'expect'
-import { HORIZONTAL, VERTICAL } from 'src/utils/constants'
+import { GAP, HORIZONTAL, VERTICAL } from 'src/utils/constants'
 import {
+  generateGrid,
   computeTrackCounts,
   getGridArea,
   divideArea,
@@ -10,6 +11,18 @@ import {
 } from 'src/utils/generator'
 
 describe('utils/generator', () => {
+  describe('generateGrid', () => {
+    it('should generate an empty grid', () => {
+      const grid = generateGrid(0, 0)
+      expect(grid).toEqual({
+        gap: GAP,
+        rows: 0,
+        columns: 0,
+        cells: []
+      })
+    })
+  })
+
   describe('computeTrackCounts', () => {
     it('should compute the optimal number of rows and columns for the grid', () => {
       const counts = computeTrackCounts(100, 50, 8, 5)
