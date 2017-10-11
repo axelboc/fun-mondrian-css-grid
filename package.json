@@ -18,6 +18,7 @@
     "nwb": "^0.17.1"
   },
   "dependencies": {
+    "fj-compose": "^1.1.0",
     "pick-weight": "^1.0.0",
     "random-int": "^1.0.0",
     "react": "^15.6.1",

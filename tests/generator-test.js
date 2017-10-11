@@ -1,6 +1,11 @@
 import expect from 'expect'
 import { HORIZONTAL, VERTICAL } from 'src/utils/constants'
-import { computeTrackCounts, createCells, makeCut } from 'src/utils/generator'
+import {
+  computeTrackCounts,
+  getGridArea,
+  divideArea,
+  makeCut
+} from 'src/utils/generator'
 
 describe('utils/generator', () => {
   describe('computeTrackCounts', () => {
@@ -13,21 +18,28 @@ describe('utils/generator', () => {
     })
   })
 
-  describe('createCells', () => {
+  describe('getGridArea', () => {
+    it('should determine the boundaries of the grid', () => {
+      const area = getGridArea(2, 3)
+      expect(area).toEqual([1, 3, 1, 4])
+    })
+  })
+
+  describe('divideArea', () => {
     it('should return an array', () => {
-      const cells = createCells([1, 2, 1, 2])
+      const cells = divideArea([1, 2, 1, 2])
       expect(cells).toBeAn(Array)
     })
 
     it('should return a single cell when the grid has only one row and one column', () => {
-      const cells = createCells([1, 2, 1, 2])
+      const cells = divideArea([1, 2, 1, 2])
       expect(cells).toEqual([
         { area: [1, 2, 1, 2] }
       ])
     })
 
     it('should return a set of cells that fills the entire area of the grid', () => {
-      const cells = createCells([1, 11, 1, 11])
+      const cells = divideArea([1, 11, 1, 11])
 
       const totalArea = cells.reduce((acc, { area }) => {
         const [rowStart, rowEnd, colStart, colEnd] = area

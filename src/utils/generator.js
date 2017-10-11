@@ -1,5 +1,6 @@
 import weightedPick from 'pick-weight'
 import randomInt from 'random-int'
+import compose from 'fj-compose'
 
 import {
   YELLOW, RED, BLUE,
@@ -8,17 +9,12 @@ import {
 } from './constants'
 
 export function generateGrid(w, h) {
-  const trackCounts = computeTrackCounts(w, h, GAP, TRACK_TO_GAP_RATIO)
-  const { rows, columns } = trackCounts
+  const { rows, columns } = computeTrackCounts(w, h, GAP, TRACK_TO_GAP_RATIO)
 
-  const gridArea = [1, rows + 1, 1, columns + 1]
-  const cells = createCells(gridArea)
+  const buildCells = compose(divideArea, getGridArea);
+  const cells = buildCells(rows, columns)
 
-  return {
-    gap: GAP,
-    ...trackCounts,
-    cells
-  }
+  return { gap: GAP, rows, columns, cells }
 }
 
 /**
@@ -39,10 +35,20 @@ export function computeTrackCounts(w, h, gap, trackToGapRatio) {
 }
 
 /**
+ * Determine the grid area based on the number of columns and rows.
+ * @param {number} rows
+ * @param {number} columns
+ * @return {array} area - boundaries of the grid
+ */
+export function getGridArea(rows, columns) {
+  return [1, rows + 1, 1, columns + 1]
+}
+
+/**
  * Recursively divide the grid into cells.
  * @param {array} area - boundaries of the grid or cell
  */
-export function createCells(area, iteration = 0) {
+export function divideArea(area, iteration = 0) {
   const [rowStart, rowEnd, colStart, colEnd] = area
 
   // Base cases
@@ -54,8 +60,8 @@ export function createCells(area, iteration = 0) {
   const [subArea1, subArea2] = makeCut(dir, area)
 
   // Recurse
-  const subCells1 = createCells(subArea1, iteration + 1)
-  const subCells2 = createCells(subArea2, iteration + 1)
+  const subCells1 = divideArea(subArea1, iteration + 1)
+  const subCells2 = divideArea(subArea2, iteration + 1)
 
   return [...subCells1, ...subCells2]
 }
