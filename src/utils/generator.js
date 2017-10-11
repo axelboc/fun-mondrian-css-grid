@@ -98,16 +98,14 @@ export function makeCut(dir, area) {
 }
 
 /**
- * Compute every cell's surface size (i.e. area) and
- * remove the cells with a surface size of zero.
+ * Remove any cell with a surface size of zero.
  * @param {array} cells
  * @return {array} - remaining cells
  */
 export function removeInvisibleCells(cells) {
-  return cells.filter(cell => {
-    const [rowStart, rowEnd, colStart, colEnd] = cell.area
-    cell.size = (rowEnd - rowStart) * (colEnd - colStart)
-    return cell.size > 0
+  return cells.filter(({ area }) => {
+    const [rowStart, rowEnd, colStart, colEnd] = area
+    return (rowEnd - rowStart) * (colEnd - colStart) > 0
   })
 }
 

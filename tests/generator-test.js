@@ -114,16 +114,9 @@ describe('utils/generator', () => {
         { area: [1, 2, 1, 2] }
       ])
 
-      expect(cells.length).toBe(1)
-      expect(cells[0].area).toEqual([1, 2, 1, 2])
-    })
-
-    it('should store the cells\' surface size', () => {
-      const cells = removeInvisibleCells([{ area: [1, 2, 1, 2] }])
-      expect(cells).toEqual([{
-        area: [1, 2, 1, 2],
-        size: 1
-      }])
+      expect(cells).toEqual([
+        { area: [1, 2, 1, 2] }
+      ])
     })
   })
 
