@@ -11,8 +11,8 @@ export function generateGrid(w, h) {
   const trackCounts = computeTrackCounts(w, h, GAP, TRACK_TO_GAP_RATIO)
   const { rows, columns } = trackCounts
 
-  const gridZone = [1, rows + 1, 1, columns + 1]
-  const cells = createCells(gridZone)
+  const gridArea = [1, rows + 1, 1, columns + 1]
+  const cells = createCells(gridArea)
 
   return {
     gap: GAP,
@@ -40,34 +40,34 @@ export function computeTrackCounts(w, h, gap, trackToGapRatio) {
 
 /**
  * Recursively divide the grid into cells.
- * @param {array} zone - boundaries of the grid or cell
+ * @param {array} area - boundaries of the grid or cell
  */
-export function createCells(zone, iteration = 0) {
-  const [rowStart, rowEnd, colStart, colEnd] = zone
+export function createCells(area, iteration = 0) {
+  const [rowStart, rowEnd, colStart, colEnd] = area
 
   // Base cases
   if (rowEnd - rowStart < 1 || colEnd - colStart < 1) return [];
-  if (iteration === MAX_ITERATIONS || rowEnd - rowStart === 1 && colEnd - colStart === 1) return [{ zone }]
+  if (iteration === MAX_ITERATIONS || rowEnd - rowStart === 1 && colEnd - colStart === 1) return [{ area }]
 
   // Pick a direction and make a cut
   const dir = weightedPick(CUTTING_DIRECTIONS, CUTTING_WEIGHTS)
-  const [subZone1, subZone2] = makeCut(dir, zone)
+  const [subArea1, subArea2] = makeCut(dir, area)
 
   // Recurse
-  const subCells1 = createCells(subZone1, iteration + 1)
-  const subCells2 = createCells(subZone2, iteration + 1)
+  const subCells1 = createCells(subArea1, iteration + 1)
+  const subCells2 = createCells(subArea2, iteration + 1)
 
   return [...subCells1, ...subCells2]
 }
 
 /**
- * Split a zone into two in a specified direction but at a random index.
+ * Split a area into two in a specified direction but at a random index.
  * @param {string} dir
- * @param {array} zone
+ * @param {array} area
  */
-export function makeCut(dir, zone) {
-  const rowBounds = zone.slice(0, 2)
-  const colBounds = zone.slice(2, 4)
+export function makeCut(dir, area) {
+  const rowBounds = area.slice(0, 2)
+  const colBounds = area.slice(2, 4)
 
   const isHorizDir = dir === HORIZONTAL
   const cutIndex = randomInt(...(isHorizDir ? rowBounds : colBounds))

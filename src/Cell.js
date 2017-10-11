@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 function Cell(props) {
-  const { zone, color } = props;
-  const [rowStart, rowEnd, colStart, colEnd] = zone;
+  const { area, color } = props;
+  const [rowStart, rowEnd, colStart, colEnd] = area;
 
   const styles = {
     gridArea: `${rowStart} / ${colStart} / ${rowEnd} / ${colEnd}`,
@@ -16,7 +16,7 @@ function Cell(props) {
 }
 
 Cell.propTypes = {
-  zone: PropTypes.arrayOf(PropTypes.number).isRequired,
+  area: PropTypes.arrayOf(PropTypes.number).isRequired,
   color: PropTypes.string,
 }
 
