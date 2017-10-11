@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 function Cell(props) {
-  const { area, color } = props;
+  const { area, colour } = props;
   const [rowStart, rowEnd, colStart, colEnd] = area;
 
   const styles = {
     gridArea: `${rowStart} / ${colStart} / ${rowEnd} / ${colEnd}`,
-    ...(color && { backgroundColor: color }),
+    ...(colour && { backgroundColor: colour }),
   }
 
   return (
@@ -17,7 +17,7 @@ function Cell(props) {
 
 Cell.propTypes = {
   area: PropTypes.arrayOf(PropTypes.number).isRequired,
-  color: PropTypes.string,
+  colour: PropTypes.string,
 }
 
 export default Cell

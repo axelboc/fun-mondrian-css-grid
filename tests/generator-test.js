@@ -4,7 +4,9 @@ import {
   computeTrackCounts,
   getGridArea,
   divideArea,
-  makeCut
+  makeCut,
+  removeInvisibleCells,
+  paintCells
 } from 'src/utils/generator'
 
 describe('utils/generator', () => {
@@ -87,6 +89,41 @@ describe('utils/generator', () => {
       expect(b).toBeLessThanOrEqualTo(15)
       expect(b).toBe(c)
       expect(d).toBe(15)
+    })
+  })
+
+  describe('removeInvisibleCells', () => {
+    it('should remove cells with a surface size of zero', () => {
+      const cells = removeInvisibleCells([
+        { area: [1, 1, 1, 1] },
+        { area: [1, 1, 1, 2] },
+        { area: [1, 2, 1, 1] },
+        { area: [1, 2, 1, 2] }
+      ])
+
+      expect(cells.length).toBe(1)
+      expect(cells[0].area).toEqual([1, 2, 1, 2])
+    })
+
+    it('should store the cells\' surface size', () => {
+      const cells = removeInvisibleCells([{ area: [1, 2, 1, 2] }])
+      expect(cells).toEqual([{
+        area: [1, 2, 1, 2],
+        size: 1
+      }])
+    })
+  })
+
+  describe('paintCells', () => {
+    it('should not modify the cells\' areas', () => {
+      const cells = paintCells([
+        { area: [1, 2, 1, 2] },
+        { area: [1, 2, 2, 3] }
+      ])
+
+      expect(cells.length).toBe(2)
+      expect(cells[0].area).toEqual([1, 2, 1, 2])
+      expect(cells[1].area).toEqual([1, 2, 2, 3])
     })
   })
 })

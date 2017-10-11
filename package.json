@@ -20,6 +20,7 @@
   "dependencies": {
     "fj-compose": "^1.1.0",
     "pick-weight": "^1.0.0",
+    "random-bool": "^1.0.2",
     "random-int": "^1.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"

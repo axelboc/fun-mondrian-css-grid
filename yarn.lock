@@ -3032,6 +3032,10 @@ is-my-json-valid@^2.12.4:
     jsonpointer "^4.0.0"
     xtend "^4.0.0"
 
+is-nil@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/is-nil/-/is-nil-1.0.1.tgz#2daba29e0b585063875e7b539d071f5b15937969"
+
 is-number-object@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/is-number-object/-/is-number-object-1.0.3.tgz#f265ab89a9f445034ef6aff15a8f00b00f551799"
@@ -4673,6 +4677,12 @@ querystringify@0.0.x:
 querystringify@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-1.0.0.tgz#6286242112c5b712fa654e526652bf6a13ff05cb"
+
+random-bool@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/random-bool/-/random-bool-1.0.2.tgz#92267cd94c6265180f073c814b31d51121b6eafe"
+  dependencies:
+    is-nil "^1.0.1"
 
 random-int@^1.0.0:
   version "1.0.0"
